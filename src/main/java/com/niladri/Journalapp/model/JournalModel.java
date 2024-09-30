@@ -1,5 +1,7 @@
 package com.niladri.Journalapp.model;
 
+import jakarta.annotation.Nonnull;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class JournalModel {
     @Id
     private ObjectId id;
+    @NotNull
     private String title;
     private String content;
 }

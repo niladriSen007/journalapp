@@ -1,7 +1,7 @@
 package com.niladri.Journalapp.controller;
 
 import com.niladri.Journalapp.model.JournalModel;
-import com.niladri.Journalapp.service.JournalService;
+import com.niladri.Journalapp.service.journal.JournalService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
