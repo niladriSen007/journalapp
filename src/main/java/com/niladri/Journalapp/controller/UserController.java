@@ -35,9 +35,9 @@ public class UserController {
         return new ResponseEntity<>(user.get(), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
-    public ResponseEntity<UserModel> updateUser(@PathVariable ObjectId id, @RequestBody UserModel userModel) {
-        UserModel user = userService.updateUser(id, userModel);
+    @PutMapping("/update/{name}")
+    public ResponseEntity<UserModel> updateUser(@PathVariable String name, @RequestBody UserModel userModel) {
+        UserModel user = userService.updateUser(name, userModel);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

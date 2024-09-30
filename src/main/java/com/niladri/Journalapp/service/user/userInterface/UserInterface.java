@@ -12,7 +12,7 @@ public interface UserInterface {
     List<UserModel> getAllUsers();
 
 
-    UserModel updateUser(ObjectId id, UserModel userModel);
+    UserModel updateUser(String name, UserModel userModel);
 
     Optional<UserModel> getUserByName(String name);
 }
