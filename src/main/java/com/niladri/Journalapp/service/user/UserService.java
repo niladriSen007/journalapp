@@ -33,14 +33,14 @@ public class UserService implements UserInterface {
     }
 
     @Override
-    public UserModel updateUser(ObjectId id, UserModel userModel) {
-        Optional<UserModel> user = userRepository.findById(id);
+    public UserModel updateUser(String name, UserModel userModel) {
+        Optional<UserModel> user = userRepository.findByUsername(name);
         if (user.isPresent()) {
             UserModel user1 = user.get();
             user1.setUsername(userModel.getUsername());
             user1.setPassword(userModel.getPassword());
             return userRepository.save(user1);
-        }else throw new RuntimeException("User not found");
+        } else throw new RuntimeException("User not found");
     }
 
 
