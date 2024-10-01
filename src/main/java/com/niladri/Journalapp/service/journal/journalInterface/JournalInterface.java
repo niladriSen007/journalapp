@@ -11,4 +11,6 @@ public interface JournalInterface {
     List<JournalModel> getJournalsByUserName(String username);
 
     void deleteJournal(String username, ObjectId journalId);
+
+	JournalModel updateJournal(JournalModel journalModel,ObjectId journalId, String name);
 }
