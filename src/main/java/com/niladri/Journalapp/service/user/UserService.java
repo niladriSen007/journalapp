@@ -4,6 +4,9 @@ import com.niladri.Journalapp.model.UserModel;
 import com.niladri.Journalapp.repository.UserRepository;
 import com.niladri.Journalapp.service.user.userInterface.UserInterface;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,9 +14,12 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class UserService implements UserInterface {
 
     private UserRepository userRepository;
+
+//    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private static final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -22,6 +28,7 @@ public class UserService implements UserInterface {
         userModel.setUsername(userModel.getUsername());
         userModel.setPassword((passwordEncoder.encode(userModel.getPassword())));
         userModel.setRoles(List.of("USER"));
+        log.debug("User added successfully");
         return userRepository.save(userModel);
     }
 

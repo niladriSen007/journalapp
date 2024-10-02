@@ -1,17 +1,15 @@
 package com.niladri.Journalapp.controller;
 
 import com.niladri.Journalapp.model.UserModel;
+import com.niladri.Journalapp.response.WeatherApiResponse;
+import com.niladri.Journalapp.service.WeatherService;
 import com.niladri.Journalapp.service.user.UserService;
 import lombok.AllArgsConstructor;
-import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/user")
@@ -19,6 +17,7 @@ import java.util.Optional;
 public class UserController {
     private UserService userService;
 
+    private WeatherService weatherService;
 
 
     @GetMapping("/get")
@@ -28,6 +27,15 @@ public class UserController {
         UserModel user = userService.getUserByName(name);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
+
+    @GetMapping("/get-weather")
+    public ResponseEntity<?> getWeather() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        WeatherApiResponse weather = weatherService.getWeather("Kolkata");
+        return new ResponseEntity<>("Hi "+ authentication.getName()+ " current temperature is " + weather.getCurrent().getFeelslike() +"^ c", HttpStatus.OK);
+    }
+
+
 
     @PutMapping("/update")
     public ResponseEntity<UserModel> updateUser( @RequestBody UserModel userModel) {
