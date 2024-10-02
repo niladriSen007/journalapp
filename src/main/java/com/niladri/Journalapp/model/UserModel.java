@@ -25,6 +25,9 @@ public class UserModel {
     private String username;
     @NotNull
     private String password;
+
+    private String email;
+    private boolean sentimentAnalysis;
     private List<String> roles ;
     @DBRef
     private List<JournalModel> journalEntries = new ArrayList<>();

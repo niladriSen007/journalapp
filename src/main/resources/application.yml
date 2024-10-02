@@ -1,11 +1,11 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb+srv://nil:nil@cluster0.s4vib.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-      database: journaldb
-      auto-index-creation: true
-  main:
-    allow-circular-references: true
-  application:
-    name: Journalapp
-
+  profiles:
+    active: dev
+#logging:
+#  level:
+#    com:
+#      niladri:
+#        Journalapp: DEBUG
+weather:
+  api:
+    key: ae73ebc761923d0fc90df596e1ad7666

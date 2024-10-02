@@ -1,5 +1,6 @@
 package com.niladri.Journalapp.controller;
 
+import com.niladri.Journalapp.cache.AppCache;
 import com.niladri.Journalapp.model.UserModel;
 import com.niladri.Journalapp.service.user.UserService;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,8 @@ import java.util.List;
 public class AdminController {
 	private UserService userService;
 
+	private AppCache appCache;
+
 	@GetMapping("/getallusers")
 	public ResponseEntity<List<UserModel>> getAllUsers() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -26,5 +29,11 @@ public class AdminController {
 	@PostMapping("/addnewadmin")
 	public ResponseEntity<UserModel> addNewAdmin(@RequestBody UserModel userDetails) {
 		return new ResponseEntity<>(userService.createNewAdmin(userDetails), HttpStatus.OK);
+	}
+
+	@GetMapping("/clearcache")
+	public ResponseEntity<String> clearAppCache() {
+		appCache.initialize();
+		return new ResponseEntity<>("App Cache Cleared", HttpStatus.OK);
 	}
 }
