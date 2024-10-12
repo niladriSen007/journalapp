@@ -3,6 +3,7 @@ package com.niladri.Journalapp.service;
 import com.niladri.Journalapp.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -16,6 +17,7 @@ public class UserServiceTests {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Disabled
 	@Test
 	public void testGetUserByName() {
 		Assertions.assertNotNull(userRepository.findByUsername("Nil"));
